@@ -35,5 +35,5 @@ fi
 # if [ -z "$CI" ]; then
 # fi
 
-heroku git:remote --app twitter-rpg-names-staging --remote staging
-heroku git:remote --app twitter-rpg-names-production --remote production
+heroku git:remote --app twitter-honorifics-staging --remote staging
+heroku git:remote --app twitter-honorifics-production --remote production
