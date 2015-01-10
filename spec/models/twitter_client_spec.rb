@@ -26,7 +26,7 @@ describe TwitterClient do
 
       results = client.search
 
-      expect(results.size).to eq 200
+      expect(results.size).to eq ENV.fetch("NUMBER_OF_TWEETS_TO_FETCH").to_i
     end
   end
 end
