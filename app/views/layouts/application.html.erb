@@ -9,6 +9,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= body_class %>">
+  <header>
+    <h1>Blorg the <a class="heartless" href="http://i.imgur.com/rMYmXch.jpg">Heartless</a><span class="subtitle">Fantasy names from twitter</span></h1>
+  </header>
   <%= render "flashes" -%>
   <%= yield %>
   <%= render "javascript" %>
