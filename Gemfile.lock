@@ -192,8 +192,6 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.13.0)
     rake (10.4.2)
-    recipient_interceptor (0.1.2)
-      mail
     refills (0.0.2)
     rspec-core (3.0.4)
       rspec-support (~> 3.0.0)
@@ -310,7 +308,6 @@ DEPENDENCIES
   pry-rails
   rack-timeout
   rails (= 4.2.0)
-  recipient_interceptor
   refills
   rspec-rails (~> 3.0.0)
   sass-rails (~> 5.0)
