@@ -27,5 +27,16 @@ describe NameTransformer do
         "Tyler the Creator",
       ]
     end
+
+    it "can filter better" do
+      tweet_texts = [
+        "Daniel tosh is the 3rd harbaugh brother"
+      ]
+
+      name_transformer = NameTransformer.new(tweet_texts)
+      results = name_transformer.transform
+
+      expect(results).to eq ["Is the 3rd"]
+    end
   end
 end

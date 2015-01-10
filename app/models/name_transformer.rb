@@ -1,5 +1,5 @@
 class NameTransformer
-  REGEX = /.*\b([a-z][^ ]+) the \b([a-z][^ ]+)\b.*/i
+  REGEX = /.*\b(\w\S+) the \b(\w\S+)\b.*/i
 
   def initialize(tweet_texts)
     @tweet_texts = tweet_texts

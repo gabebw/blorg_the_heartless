@@ -33,15 +33,15 @@ describe NameFilter do
       ]
     end
 
-    it "does not match punctuation" do
+    it "allows some punctuation" do
       tweet_texts = [
-        "@kyunghyuncrs my pleasure !1 the name's joy or you can all me your happiness !"
+        "you're the reason'd"
       ]
 
       name_filter = NameFilter.new(tweet_texts)
       results = name_filter.filter
 
-      expect(results).to be_empty
+      expect(results).to eq tweet_texts
     end
 
     it "does not allow usernames as part of the title" do

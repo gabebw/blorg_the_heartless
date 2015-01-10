@@ -1,5 +1,5 @@
 class NameFilter
-  MATCHING_FILTER = /[^@][a-z]\S+ the [a-z]\S+/i
+  MATCHING_FILTER = /\w+ the \w+/i
 
   def initialize(tweet_texts)
     @tweet_texts = tweet_texts
