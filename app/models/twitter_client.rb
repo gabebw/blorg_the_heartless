@@ -4,6 +4,7 @@ class TwitterClient
     lang: "en",
     result_type: "recent",
   }
+  NUMBER_OF_RESULTS = 200
 
   def initialize
     @client = Twitter::REST::Client.new do |config|
@@ -15,6 +16,6 @@ class TwitterClient
   end
 
   def search
-    @client.search(" the ", SEARCH_OPTIONS).take(200).map(&:text)
+    @client.search(" the ", SEARCH_OPTIONS).take(NUMBER_OF_RESULTS).map(&:text)
   end
 end

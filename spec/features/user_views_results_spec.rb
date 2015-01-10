@@ -6,7 +6,23 @@ feature "User visits homepage" do
 
     visit root_path
 
-    expect(name).to have_content "Tyler the Creator"
+    expect(name).to have_content "Prince Leopold of the Creator"
+  end
+
+  scenario "and sees nouns with 'of' like 'of the speed'" do
+    stub_matching_search(" the ", "the speed")
+
+    visit root_path
+
+    expect(name).to have_content "Prince Leopold of the Speed"
+  end
+
+  scenario "and sees adjectives like 'the speedy'" do
+    stub_matching_search(" the ", "the speedy")
+
+    visit root_path
+
+    expect(name).to have_content "Prince Leopold the Speedy"
   end
 
   scenario "and does not see tweets without X the Y" do
@@ -30,7 +46,7 @@ feature "User visits homepage" do
 
     visit root_path
 
-    expect(name).to eq "Tyler the Creator"
+    expect(name).to eq "Prince Leopold of the Creator"
   end
 
   scenario "and sees tweets with newlines correctly stripped" do
@@ -38,7 +54,7 @@ feature "User visits homepage" do
 
     visit root_path
 
-    expect(name).to eq "Tyler the Creator"
+    expect(name).to eq "Prince Leopold of the Creator"
   end
 
   scenario "and sees tweets with their original tweets" do
@@ -47,8 +63,20 @@ feature "User visits homepage" do
 
     visit root_path
 
-    expected = %<Tyler the Creator (from "#{original_tweet}")>
+    expected = %<Prince Leopold of the Creator (from "#{original_tweet}")>
     expect(page.find("li").text).to eq expected
+  end
+
+  scenario "and does not see tweets with incorrect parts of speech" do
+    stub_matching_search(" the ", "for the follow")
+
+    visit root_path
+
+    expect(page).not_to have_any_names
+  end
+
+  def have_any_names
+    have_css("li")
   end
 
   def name

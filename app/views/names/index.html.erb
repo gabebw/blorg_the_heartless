@@ -1,7 +1,15 @@
 <ul>
-  <% @names.each_with_index do |name, i| %>
+  <% @adjectives.each_with_index do |title, i| %>
     <li>
-      <strong><%= name %></strong>
+      <strong>
+        Prince Leopold
+        <% if title[:type] == "noun" %>
+          of the <%= title[:word].capitalize %>
+        <% elsif title[:type] == "adjective" %>
+          the <%= title[:word].capitalize %>
+        <% end %>
+      </strong>
+
       (from "<%= CGI.unescapeHTML(@original_tweets[i]) %>")
     </li>
   <% end %>

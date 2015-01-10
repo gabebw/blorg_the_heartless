@@ -1,9 +1,11 @@
 class NamesController < ApplicationController
   def index
     search_results = TwitterClient.new.search
-    @names = NameTransformer.new(
-      NameFilter.new(search_results).filter
-    ).transform
-    @original_tweets = NameFilter.new(search_results).filter
+    filtered_by_name = NameFilter.new(search_results).filter
+    @adjectives = PartOfSpeechFilter.new(
+      NameTransformer.new(filtered_by_name).transform
+    ).filter
+
+    @original_tweets = filtered_by_name
   end
 end

@@ -4,15 +4,24 @@ describe NameTransformer do
   context "#filter" do
     it "transforms a text containing X the Y into just X the Y" do
       tweet_texts = [
-        "hello i am Tyler the Creator, hi",
+        "hello i am the Creator, hi",
       ]
 
       name_transformer = NameTransformer.new(tweet_texts)
       results = name_transformer.transform
 
       expect(results).to eq [
-        "Tyler the Creator",
+        "creator",
       ]
+    end
+
+    it "allows 'the X'" do
+      tweet_texts = ["the speed"]
+
+      name_transformer = NameTransformer.new(tweet_texts)
+      results = name_transformer.transform
+
+      expect(results).to eq ["speed"]
     end
 
     it "capitalizes X and Y in 'X the Y'" do
@@ -24,7 +33,7 @@ describe NameTransformer do
       results = name_transformer.transform
 
       expect(results).to eq [
-        "Tyler the Creator",
+        "creator",
       ]
     end
 
@@ -34,7 +43,7 @@ describe NameTransformer do
       name_transformer = NameTransformer.new(tweet_texts)
       results = name_transformer.transform
 
-      expect(results).to eq ["You're the Most precious"]
+      expect(results).to eq ["most precious"]
     end
 
     it "can filter better" do
@@ -45,7 +54,7 @@ describe NameTransformer do
       name_transformer = NameTransformer.new(tweet_texts)
       results = name_transformer.transform
 
-      expect(results).to eq ["Is the 3rd"]
+      expect(results).to eq ["3rd"]
     end
   end
 end

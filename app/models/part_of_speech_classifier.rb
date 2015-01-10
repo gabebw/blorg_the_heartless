@@ -4,7 +4,7 @@ class PartOfSpeechClassifier
   end
 
   def noun?(word)
-    nouns = @tagger.get_nouns(tagged(word)).keys
+    nouns = @tagger.get_nouns(tagged(word.downcase)).keys
 
     nouns == [word]
   end

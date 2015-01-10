@@ -9,6 +9,14 @@ describe PartOfSpeechClassifier do
     expect(result).to be true
   end
 
+  it "can determine if a word is a noun" do
+    classifier = PartOfSpeechClassifier.new
+
+    result = classifier.noun?("Is")
+
+    expect(result).to be false
+  end
+
   it "can determine if a word is an adjective" do
     classifier = PartOfSpeechClassifier.new
 
