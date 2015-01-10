@@ -1,5 +1,5 @@
 <ul>
-  <% @adjectives.each_with_index do |title, i| %>
+  <% @titles.each do |title| %>
     <li>
       <strong>
         Prince Leopold
@@ -9,8 +9,6 @@
           the <%= title[:word].capitalize %>
         <% end %>
       </strong>
-
-      (from "<%= CGI.unescapeHTML(@original_tweets[i]) %>")
     </li>
   <% end %>
 </ul>

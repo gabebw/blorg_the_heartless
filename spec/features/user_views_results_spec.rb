@@ -57,16 +57,6 @@ feature "User visits homepage" do
     expect(name).to eq "Prince Leopold of the Creator"
   end
 
-  scenario "and sees tweets with their original tweets" do
-    original_tweet = "Hello, I am tyler the Creator"
-    stub_matching_search(" the ", original_tweet)
-
-    visit root_path
-
-    expected = %<Prince Leopold of the Creator (from "#{original_tweet}")>
-    expect(page.find("li").text).to eq expected
-  end
-
   scenario "and does not see tweets with incorrect parts of speech" do
     stub_matching_search(" the ", "for the follow")
 
