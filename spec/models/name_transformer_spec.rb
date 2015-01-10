@@ -28,6 +28,15 @@ describe NameTransformer do
       ]
     end
 
+    it "allows 'the most X'" do
+      tweet_texts = ["you're the most precious"]
+
+      name_transformer = NameTransformer.new(tweet_texts)
+      results = name_transformer.transform
+
+      expect(results).to eq ["You're the Most precious"]
+    end
+
     it "can filter better" do
       tweet_texts = [
         "Daniel tosh is the 3rd harbaugh brother"
