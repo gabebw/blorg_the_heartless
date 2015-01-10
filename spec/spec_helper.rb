@@ -1,6 +1,9 @@
 require "webmock/rspec"
 
-# http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+SPEC_ROOT = Pathname.new(__dir__)
+
+Dir[SPEC_ROOT.join("support/non_rails/**/*.rb")].each { |file| require file }
+
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     expectations.syntax = :expect

@@ -22,6 +22,7 @@ gem "refills"
 gem "sass-rails", "~> 5.0"
 gem "simple_form"
 gem "title"
+gem "twitter"
 gem "uglifier"
 gem "unicorn"
 
