@@ -8,5 +8,13 @@ feature "User visits homepage" do
 
     expect(page).to have_content "Tyler the Creator"
   end
+
+  scenario "and does not see tweets without X the Y" do
+    stub_matching_search(" the ", "hi there")
+
+    visit root_path
+
+    expect(page).not_to have_content "hi there"
+  end
 end
 
