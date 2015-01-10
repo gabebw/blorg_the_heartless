@@ -41,7 +41,7 @@ feature "User visits homepage" do
     expect(page).not_to have_content "&amp;"
   end
 
-  scenario "and sees capitalized names with titles" do
+  scenario "and sees capitalized names with honorifics" do
     stub_matching_search(" the ", "hi there, I'm tyler the creator, hi")
 
     visit root_path

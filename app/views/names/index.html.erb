@@ -1,12 +1,12 @@
 <ul>
-  <% @titles.each do |title| %>
+  <% @honorifics.each do |honorific| %>
     <li>
       <strong>
         Prince Leopold
-        <% if title[:type] == "noun" %>
-          of the <%= title[:word].capitalize %>
-        <% elsif title[:type] == "adjective" %>
-          the <%= title[:word].capitalize %>
+        <% if honorific[:type] == "noun" %>
+          of the <%= honorific[:word].capitalize %>
+        <% elsif honorific[:type] == "adjective" %>
+          the <%= honorific[:word].capitalize %>
         <% end %>
       </strong>
     </li>

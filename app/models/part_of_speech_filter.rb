@@ -1,29 +1,29 @@
 class PartOfSpeechFilter
-  def initialize(possible_titles)
-    @possible_titles = possible_titles.compact
+  def initialize(possible_honorifics)
+    @possible_honorifics = possible_honorifics.compact
     @classifier = PartOfSpeechClassifier.new
   end
 
   def filter
-    tagged_titles.compact
+    tagged_honorifics.compact
   end
 
   private
 
-  def tagged_titles
-    @possible_titles.map do |title|
-      if @classifier.adjective?(title.downcase)
-        { word: title, type: "adjective" }
-      elsif @classifier.noun?(title.downcase)
-        { word: title, type: "noun" }
+  def tagged_honorifics
+    @possible_honorifics.map do |honorific|
+      if @classifier.adjective?(honorific.downcase)
+        { word: honorific, type: "adjective" }
+      elsif @classifier.noun?(honorific.downcase)
+        { word: honorific, type: "noun" }
       else
         nil
       end
     end
   end
 
-  def valid_title?(title)
-    @classifier.adjective?(title.downcase) ||
-      @classifier.noun?(title.downcase)
+  def valid_honorific?(honorific)
+    @classifier.adjective?(honorific.downcase) ||
+      @classifier.noun?(honorific.downcase)
   end
 end

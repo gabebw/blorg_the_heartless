@@ -7,18 +7,18 @@ class NameTransformer
 
   def transform
     @tweet_texts.map do |text|
-      title_only(text.gsub(/\s+/, " "))
+      honorific_only(text.gsub(/\s+/, " "))
     end
   end
 
   private
 
-  def title_only(text)
-    title = nil
+  def honorific_only(text)
+    honorific = nil
     text.gsub(REGEX) do
       word = $1
-      title = word.downcase
+      honorific = word.downcase
     end
-    title
+    honorific
   end
 end

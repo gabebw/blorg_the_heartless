@@ -44,7 +44,7 @@ describe NameFilter do
       expect(results).to eq tweet_texts
     end
 
-    it "does not allow usernames as part of the title" do
+    it "does not allow usernames as part of the honorific" do
       tweet_texts = ["@gabebw the one"]
 
       name_filter = NameFilter.new(tweet_texts)
