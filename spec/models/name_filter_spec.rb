@@ -8,6 +8,7 @@ describe NameFilter do
         "This is uppercase Tyler the Creator",
         "This is all one word: OnetheWord",
         "BLORG THE HEARTLESS",
+        "@kyunghyuncrs my pleasure !1 the name's joy or you can all me your happiness !",
       ]
 
       name_filter = NameFilter.new(tweet_texts)
