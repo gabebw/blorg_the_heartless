@@ -4,7 +4,7 @@ class TwitterClient
     lang: "en",
     result_type: "recent",
   }
-  NUMBER_OF_RESULTS = 200
+  NUMBER_OF_RESULTS = ENV.fetch("NUMBER_OF_TWEETS_TO_FETCH")
 
   def initialize
     @client = Twitter::REST::Client.new do |config|
