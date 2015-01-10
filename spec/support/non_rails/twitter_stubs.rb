@@ -1,11 +1,18 @@
 module TwitterStubs
-  def stub_matching_search(term, result_term, lang: "en",result_type: "recent", exclude: "retweets", count: 1)
+  def stub_matching_search(
+    term,
+    result_text,
+    lang: "en",
+    result_type: "recent",
+    exclude: "retweets",
+    count: 1
+  )
     encoded_term = URI.encode(term)
 
     url = "https://api.twitter.com/1.1/search/tweets.json?count=100&exclude=#{exclude}&lang=#{lang}&q=#{encoded_term}&result_type=#{result_type}"
 
     stub_request(:get, Regexp.new(Regexp.escape(url))).
-      to_return(status: 200, body: search_result(result_term, count).to_json)
+      to_return(status: 200, body: search_result(result_text, count).to_json)
 
     stub_next_search_page
   end
@@ -35,7 +42,7 @@ module TwitterStubs
     }
   end
 
-  def status(term)
+  def status(text)
     {
       "coordinates" => nil,
       "favorited" => false,
@@ -59,7 +66,7 @@ module TwitterStubs
       },
       "in_reply_to_user_id_str" => nil,
       "contributors" => nil,
-      "text" => "Hello there #{term} why not\n eh",
+      "text" => text,
       "metadata" => {
         "iso_language_code" => "en",
         "result_type" => "recent"

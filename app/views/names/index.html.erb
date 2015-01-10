@@ -1,5 +1,8 @@
 <ul>
-  <% @search_results.each do |tweet_text| %>
-    <li><%= tweet_text %></li>
+  <% @names.each_with_index do |name, i| %>
+    <li>
+      <strong><%= name %></strong>
+      (from "<%= @original_tweets[i] %>")
+    </li>
   <% end %>
 </ul>

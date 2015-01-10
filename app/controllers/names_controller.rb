@@ -1,6 +1,9 @@
 class NamesController < ApplicationController
   def index
-    client = TwitterClient.new
-    @search_results = NameTransformer.new(NameFilter.new(client.search).filter).transform
+    search_results = TwitterClient.new.search
+    @names = NameTransformer.new(
+      NameFilter.new(search_results).filter
+    ).transform
+    @original_tweets = NameFilter.new(search_results).filter
   end
 end
