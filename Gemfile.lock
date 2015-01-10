@@ -94,6 +94,7 @@ GEM
       thread_safe
     email_validator (1.5.0)
       activemodel
+    engtagger (0.2.0)
     equalizer (0.0.9)
     erubis (2.7.0)
     execjs (2.2.2)
@@ -294,6 +295,7 @@ DEPENDENCIES
   delayed_job_active_record
   dotenv-rails
   email_validator
+  engtagger
   factory_girl_rails
   flutie
   formulaic
