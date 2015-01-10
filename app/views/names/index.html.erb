@@ -3,12 +3,16 @@
     <li>
       <strong>
         Prince Leopold
-        <% if honorific[:type] == "noun" %>
-          of the <%= honorific[:word].capitalize %>
-        <% elsif honorific[:type] == "adjective" %>
-          the <%= honorific[:word].capitalize %>
+        <% if honorific.part_of_speech == "noun" %>
+          of the <%= honorific.word.capitalize %>
+        <% elsif honorific.part_of_speech == "adjective" %>
+          the <%= honorific.word.capitalize %>
         <% end %>
       </strong>
+
+      (from
+      "<%= CGI.unescapeHTML(honorific.text) %>"
+      )
     </li>
   <% end %>
 </ul>

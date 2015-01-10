@@ -1,6 +1,6 @@
 class PartOfSpeechFilter
   def initialize(possible_honorifics)
-    @possible_honorifics = possible_honorifics.compact
+    @possible_honorifics = possible_honorifics
     @classifier = PartOfSpeechClassifier.new
   end
 
@@ -12,18 +12,15 @@ class PartOfSpeechFilter
 
   def tagged_honorifics
     @possible_honorifics.map do |honorific|
-      if @classifier.adjective?(honorific.downcase)
-        { word: honorific, type: "adjective" }
-      elsif @classifier.noun?(honorific.downcase)
-        { word: honorific, type: "noun" }
+      if @classifier.adjective?(honorific.word.downcase)
+        honorific.part_of_speech = "adjective"
+        honorific
+      elsif @classifier.noun?(honorific.word.downcase)
+        honorific.part_of_speech = "noun"
+        honorific
       else
         nil
       end
     end
-  end
-
-  def valid_honorific?(honorific)
-    @classifier.adjective?(honorific.downcase) ||
-      @classifier.noun?(honorific.downcase)
   end
 end

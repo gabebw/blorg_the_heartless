@@ -7,8 +7,11 @@ class NameTransformer
 
   def transform
     @tweet_texts.map do |text|
-      honorific_only(text.gsub(/\s+/, " "))
-    end
+      word = honorific_only(text.gsub(/\s+/, " "))
+      if word.present?
+        Honorific.new(text, word)
+      end
+    end.compact
   end
 
   private
