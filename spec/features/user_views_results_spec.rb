@@ -6,7 +6,7 @@ feature "User visits homepage" do
 
     visit root_path
 
-    expect(page).to have_content "Tyler the Creator"
+    expect(name).to have_content "Tyler the Creator"
   end
 
   scenario "and does not see tweets without X the Y" do
@@ -17,12 +17,20 @@ feature "User visits homepage" do
     expect(page).not_to have_content "hi there"
   end
 
+  scenario "and sees unescaped HTML" do
+    stub_matching_search(" the ", "tyler the creator &amp; there")
+
+    visit root_path
+
+    expect(page).not_to have_content "&amp;"
+  end
+
   scenario "and sees capitalized names with titles" do
     stub_matching_search(" the ", "hi there, I'm tyler the creator, hi")
 
     visit root_path
 
-    expect(page.find("li strong").text).to eq "Tyler the Creator"
+    expect(name).to eq "Tyler the Creator"
   end
 
   scenario "and sees tweets with newlines correctly stripped" do
@@ -30,7 +38,7 @@ feature "User visits homepage" do
 
     visit root_path
 
-    expect(page.find("li strong").text).to eq "Tyler the Creator"
+    expect(name).to eq "Tyler the Creator"
   end
 
   scenario "and sees tweets with their original tweets" do
@@ -41,5 +49,9 @@ feature "User visits homepage" do
 
     expected = %<Tyler the Creator (from "#{original_tweet}")>
     expect(page.find("li").text).to eq expected
+  end
+
+  def name
+    page.find("li strong").text
   end
 end
