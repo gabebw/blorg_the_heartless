@@ -1,5 +1,7 @@
 # Blorg the Heartless
 
+![Blorg the Heartless](http://i.imgur.com/rMYmXch.jpg)
+
 Blorg the Heartless (a/k/a Honorifics) pulls tweets containing the phrase "the
 {word}", classifies the word as a noun or an adjective, then prints out "Prince
 Leopold the {word}" if it's an adjective (like Prince Leopold the Speedy) or
